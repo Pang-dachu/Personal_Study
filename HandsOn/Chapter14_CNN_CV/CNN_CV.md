@@ -52,7 +52,8 @@
 - 입력 이미지의 구성 [높이, 너비, 채널]
 - 미니배치 이미지 구성 [갯수, 높이, 너비, 채널]
 
-- SAME vs VALID Padding 
+- SAME vs VALID Padding  
+
 ![image](./image14-7.PNG)
 
 - CNN층 구성
@@ -80,6 +81,7 @@ conv = keras.layers.Conv2D(32,(3,3), padding="same", activation="relu")
 
 - 최대 풀링의 경우 작은 변화에도 일정 수준의 불변성을 생성
     - 회전, 확대, 축소에 대한 약간의 불변성을 제공
+
     ![image](./image14-9.PNG)
 
 - 단점
@@ -124,6 +126,7 @@ global_avg_pool = keras.layers.GlobalAvgPool2D()
 - 맨 위층에는 Fully Connected Layer(```activation="relu"```)를 설정 
 
 - 마지막 층에서 예측 계산(activation은 유형에 따라 다름)
+
 ![image](./image14-11.PNG)
 
 - CNN 층에 필터를 크게 사용하지 않는 것이 좋다 
@@ -171,14 +174,17 @@ model = keras.models.Sequential([
 ### 14.4.1 LeNet-5
 
 - 1998년,MNIST에 사용
+
 [image](./table14-1.PNG)
 
 ### 14.4.2 AlexNet
 
 - 2012년, IMAGENET 대회에서 우승
+
 [image](./table14-2.PNG)
 
 - 여기서 Data Argmentation이 수행되는 과정이 추가됨
+
 [image](./image14-12.PNG)
 
 - C1과 C3층 사이에 LRN 정규화 단계를 사용
@@ -191,6 +197,7 @@ model = keras.models.Sequential([
 - Inception Module 이라는 서브 네트워크를 가지고 있어 효과적인 파라미터 사용이 가능
 
 - AlexNet보다 10배 적은 파라미터를 가짐
+
 [image](./image14-13.PNG)
 
 - 입력 이미지가 4개의 다른 층으로 출력 
@@ -235,16 +242,19 @@ model = keras.models.Sequential([
 - 스킵 연결 덕분에 입력 신호가 전체 네트워크에 쉽게 영향을 준다고 함
 
 일반적인 심층 신경망과 심층 잔차 네트워크의 구조 비교 
+
 [image](./image14-16.PNG)
 
 
 - ResNet의 구조는 GoogLeNet과 똑같이 시작하고 종료 
 - 단, 중간에 잔차 유닛을 매우 깊게 쌓았다는 점이 차이
+
 [image](./image14-17.PNG)
 
 - feature map의 수는 잔차 유닛마다 두배로 늘어나며 높이와 너비는 절반
 - 이 경우 입,출력의 크기가 달라서 입력이 잔차 유닛의 출력에 바로 더해질수 없음
 - 이 문제를 해결하기 위해 출력 특성 맵의 수가 같은 1x1 CNN 층으로 입력을 통과 시킨다고 함 
+
 [image](./image14-18.PNG)
 
 
