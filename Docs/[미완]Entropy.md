@@ -1,25 +1,43 @@
 # Entropy, Cross Entropy, KL Divergence
 ---
 
-
-
----
 ## 1. Entropy
+
+- 본래 Entropy는 열 역학에서 사용하던 개념으로 분자의 무질서함을 측정하는 척도
+
+- 이 개념이 인공지능 분야로 넘어오면서 불순도의 측정에 사용되었는데 이때의 Entropy는 확률 분포의 불확실성 으로 표현할 수 있다.
+
+- 우선 확률 분포의 불확실성은 확률 분포에서 어떤 값이 나올지 확신할 수 없는 상태이다.
+
+ex) 동전 던지기에서 앞,뒤 가 나올 확률은 각 50%로 생각하지만 실제로는 어떤 면이 나올지 확신할 수 없는 상태이기에 동전 던지기에서의 확률 분포는 불확실성을 가지고 있는 상태임.
+(실생활에서의 대부분의 경우의 확률 분포는 불확실성을 가지고 있다고 생각함)
+
+- Entropy는 0 ~ 1 사이의 값을 가지는데 정보의 무질서함 혹은 확률 분포의 불확실성이라는 지표이므로 1에 가까울수록 무질서, 불확실하며 0에 가까울수록 반대가 된다.
+
+Entropy는 분류 문제에서 사용한다.
+    - 머신러닝 : Tree 알고리즘이 Entropy를 이용한 Information Gain을 통해 분기를 생성하며 결정을 잘 내리는 방향으로 학습을 진행한다.
+
+    - 딥러닝 : 손실함수로 Cross Entropy를 사용한다.
 
 ---
 ## 2. Cross Entropy
 
-### 2.1 Chat GPT의 답변 
-    Cross Entropy는 머신러닝 및 딥러닝에서 매우 중요한 개념 중 하나로, 분류 문제에서 예측한 결과와 실제 결과 간의 차이를 측정하는데 사용됩니다.
 
-    Cross Entropy는 주로 분류 문제에서 두 확률 분포 간의 차이를 측정하는데 사용됩니다. 이 때 하나의 분포는 실제 분포(ground truth distribution)이고, 다른 하나는 예측 분포(predicted distribution)입니다. Cross Entropy는 두 분포 간의 차이를 측정하며, 이 값이 작을수록 예측 결과가 실제 결과에 가깝다고 판단할 수 있습니다.
-
-    분류 모델에서 Cross Entropy는 모델이 예측한 확률 분포와 실제 분포 간의 차이를 측정하여 모델을 학습시킬 때 사용됩니다. 모델이 잘못된 분류를 할 경우 Cross Entropy는 높아지고, 올바른 분류를 할 경우 Cross Entropy는 낮아집니다. 따라서 Cross Entropy를 최소화하는 방향으로 모델을 학습시키면, 더 정확한 분류 모델을 얻을 수 있습니다.
-
-    또한, Cross Entropy는 분류 문제 뿐만 아니라 다른 머신러닝 및 딥러닝 문제에서도 다양하게 활용됩니다. 예를 들어, 회귀 문제에서는 Cross Entropy 대신 Mean Squared Error(MSE) 등의 손실 함수를 사용합니다.
 
 
 
 
 ---
 ## 3. KL Divergence
+
+
+
+
+
+
+---
+Reference 
+
+[Chat GPT](https://chat.openai.com/)
+[재호아빠의 연구노트](https://dhkim9108.tistory.com/m/7)
+[꾸준희](https://eehoeskrap.tistory.com/13)
