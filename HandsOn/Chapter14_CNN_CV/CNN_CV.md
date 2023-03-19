@@ -175,17 +175,17 @@ model = keras.models.Sequential([
 
 - 1998년,MNIST에 사용
 
-[image](./table14-1.PNG)
+![image](./table14-1.PNG)
 
 ### 14.4.2 AlexNet
 
 - 2012년, IMAGENET 대회에서 우승
 
-[image](./table14-2.PNG)
+![image](./table14-2.PNG)
 
 - 여기서 Data Argmentation이 수행되는 과정이 추가됨
 
-[image](./image14-12.PNG)
+![image](./image14-12.PNG)
 
 - C1과 C3층 사이에 LRN 정규화 단계를 사용
     - 가장 강하게 활성화된 뉴런이 다른 특성 맵의 같은 위치의 뉴런 억제
@@ -198,7 +198,7 @@ model = keras.models.Sequential([
 
 - AlexNet보다 10배 적은 파라미터를 가짐
 
-[image](./image14-13.PNG)
+![image](./image14-13.PNG)
 
 - 입력 이미지가 4개의 다른 층으로 출력 
 - 모든 층이 "same" padding을 사용하므로 feature map의 높이와 너비가 같음 
@@ -207,7 +207,7 @@ model = keras.models.Sequential([
 - why?) 왜 1x1 커널의 CNN층을 가질까 ?
     -> 파라미터 갯수가 줄어들며 훈련 속도가 높아지고 일반화 성능이 향상되는 이유로 사용
 
-[image](./image14-14.PNG)
+![image](./image14-14.PNG)
 
 상세설명 p.567
 
@@ -232,7 +232,7 @@ model = keras.models.Sequential([
     - 만약 입력 x를 네트워크의 출력에 더한다면(이것을 스킵연결이라고 함) 
     - 네트워크는 h(x) 대신에 f(x) = h(x) - x 를 학습하게 되는데 이것을 잔차 학습 이라고 함
 
-[image](./image14-15.PNG)
+![image](./image14-15.PNG)
 
 - 일반적인 신경망을 초기화할 때 >> 가중치는 0에 가까움, 따라서 네트워크도 0에 가까운 값을 출력
 - 스킵 연결 추가시에 네트워크는 입력과 같은 값을 출력 
@@ -243,19 +243,19 @@ model = keras.models.Sequential([
 
 일반적인 심층 신경망과 심층 잔차 네트워크의 구조 비교 
 
-[image](./image14-16.PNG)
+![image](./image14-16.PNG)
 
 
 - ResNet의 구조는 GoogLeNet과 똑같이 시작하고 종료 
 - 단, 중간에 잔차 유닛을 매우 깊게 쌓았다는 점이 차이
 
-[image](./image14-17.PNG)
+![image](./image14-17.PNG)
 
 - feature map의 수는 잔차 유닛마다 두배로 늘어나며 높이와 너비는 절반
 - 이 경우 입,출력의 크기가 달라서 입력이 잔차 유닛의 출력에 바로 더해질수 없음
 - 이 문제를 해결하기 위해 출력 특성 맵의 수가 같은 1x1 CNN 층으로 입력을 통과 시킨다고 함 
 
-[image](./image14-18.PNG)
+![image](./image14-18.PNG)
 
 
 - ResNet-34는 34개의 층으로 구성된 ResNet
