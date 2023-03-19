@@ -2,6 +2,7 @@
 
 ## Intro
 <details>
+<summary>Intro</summary>
 
 - CNN은 시각 피질 연구에서 시작되었음 
 - 시각분야, 음성인식, 자연어처리에 사용됨
@@ -9,10 +10,12 @@
     1. CNN구조 
     2. Object Detection
     3. Semantic Segmentation
-    
+
 </details>
 
 ## 14.1 시각 피질 구조 
+<details>
+<summary>시각 피질 구조</summary>
 
 - 고수준 뉴런이 저수준 뉴런의 출력에 기반한다는 아이디어
 
@@ -20,8 +23,11 @@
 
 - 이미지의 부분 특성이 모여 전체를 인식하는 느낌
 
+</details>
 
 ## 14.2 합성곱 층 
+<details>
+<summary>합성곱 층</summary>
 
 - 합성곱 층의 뉴런은 입력된 이미지의 모든 픽셀에 연결되는 것이 아님
 - 필터의 영역 안에 있는 픽셀에만 연결됨
@@ -31,14 +37,20 @@
 
 - 인식하는 과정에서 스트라이드, 패딩의 과정을 사용할 수 있음
 
+</details>
 
 ### 14.2.1 필터 
+<details>
+<summary>필터</summary>
 
 - 필터는 feature map 을 생성함
 - FM은 가장 필터를 가장 크게 활성화시키는 이미지의 영역을 강조
 
+</details>
 
 ### 14.2.2 여러가지 특성 맵 찾기 
+<details>
+<summary>여러가지 특성 맵 찾기</summary>
 
 - feature map의 픽셀은 하나의 뉴런에 해당 
 - 하나의 feature map에서는 모든 뉴런이 동일한 가중치와 편향을 공유
@@ -48,8 +60,11 @@
 
 (CNN층의 뉴런 출력 수학 계산 식은 생략)
 
+</details>
 
 ### 14.2.3 텐서플로 구현 
+<details>
+<summary>텐서플로 구현</summary>
 
 - 입력 이미지의 구성 [높이, 너비, 채널]
 - 미니배치 이미지 구성 [갯수, 높이, 너비, 채널]
@@ -67,7 +82,7 @@ conv = keras.layers.Conv2D(32,(3,3), padding="same", activation="relu")
 
 # filter와 kernel_size를 축약하여 사용하며 strides의 경우 기본 값을 사용하면 기재하지 않음
 ```
-
+</details>
 
 ### 14.2.4 메모리 요구 사항 
 
@@ -75,6 +90,9 @@ conv = keras.layers.Conv2D(32,(3,3), padding="same", activation="relu")
 
 
 ## 14.3 풀링 층
+<details>
+<summary>풀링 층</summary>
+
 - 풀링의 목적
     - 계산량, 메모리 사용량, 파라미터 수를 줄이기 위함
     - subsample (축소본)을 생성하기 위함
@@ -95,7 +113,14 @@ conv = keras.layers.Conv2D(32,(3,3), padding="same", activation="relu")
     - 시맨틱 분할의 경우 불변성이 필요하지 않음
     - 등변성이 필요한 경우도 있음
 
+</details>
+
+
 ### 14.3.1 텐서플로 구현 
+<details>
+<summary>텐서플로 구현</summary>
+
+
 ```python
 pool = keras.layers.MaxPool2D(pool_size=2)
 ```
@@ -121,8 +146,11 @@ pool = keras.layers.MaxPool2D(pool_size=2)
 global_avg_pool = keras.layers.GlobalAvgPool2D()
 ```
 
+</details>
 
 ## 14.4 CNN 구조 
+<details>
+<summary>CNN 구조</summary>
 
 - 전형적인 CNN 구조 
     - CNN 층을 몇 개 쌓음(```activation="relu"```)
@@ -181,8 +209,11 @@ model = keras.models.Sequential([
 ```
 -> Test Set에서 92% 정도의 정확도 
 
+</details>
 
 ### 14.4.1 LeNet-5
+<details>
+<summary>LeNet-5</summary>
 
 - 1998년,MNIST에 사용
 
@@ -202,8 +233,11 @@ model = keras.models.Sequential([
     - 가장 강하게 활성화된 뉴런이 다른 특성 맵의 같은 위치의 뉴런 억제
     - (추가) 특성 맵을 각기 특별하게 만들어서 더 넓은 큰 그림을 본다는 느낌으로 일반화 성능을 높이는 이점이 있음 
 
+</details>
 
 ### 14.4.3 GoogLeNet
+<details>
+<summary>GoogLeNet</summary>
 
 - 층 구조가 이전의 CNN 구조들 보다 훨씬 깊음
 - Inception Module 이라는 서브 네트워크를 가지고 있어 효과적인 파라미터 사용이 가능
@@ -223,8 +257,12 @@ model = keras.models.Sequential([
 
 상세설명 p.567
 
+</details>
 
 ### 14.4.4 VGGNet
+<details>
+<summary>VGGNet</summary>
+
 - 2014년, ILSVRC 2014대회 2등 
 - 단순하고 고전적인 구조 
 - 2개 or 3개 CNN 층 뒤에 Pool layer 구조의 반복 
@@ -232,8 +270,12 @@ model = keras.models.Sequential([
 - 마지막 FC는  2개의 HL와 output으로 구성 
 - 필터는 3x3
 
+</details>
 
 ### 14.4.5 ResNet
+<details>
+<summary>VGGNet</summary>
+
 - 잔차 네트워크 사용, 2015 ILSVRC 우승
 - 152개의 층으로 구성, 굉장히 깊은 층
 - 더 적은 파라미터를 사용, 점점 더 깊은 네트워크로 모델을 구성
@@ -273,7 +315,7 @@ model = keras.models.Sequential([
 - ResNet-34는 34개의 층으로 구성된 ResNet
 - ResNet-152는 ResNet과 조금 다른 잔차 유닛의 구성을 가짐 
 
-
+</details>
 
 
 
