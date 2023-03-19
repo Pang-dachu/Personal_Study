@@ -1,6 +1,8 @@
 # 합성곱 신경망을 사용한 컴퓨터 비전 
 
 ## Intro
+<details>
+<summary>Intro</summary>
 
 - CNN은 시각 피질 연구에서 시작되었음 
 - 시각분야, 음성인식, 자연어처리에 사용됨
@@ -8,7 +10,7 @@
     1. CNN구조 
     2. Object Detection
     3. Semantic Segmentation
-
+</details>
 
 ## 14.1 시각 피질 구조 
 
