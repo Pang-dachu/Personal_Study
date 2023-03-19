@@ -14,7 +14,7 @@
 
 - 고수준 뉴런이 저수준 뉴런의 출력에 기반한다는 아이디어
 
-![image](./image14-1.PNG)
+![image](./img_src/image14-1.PNG)
 
 - 이미지의 부분 특성이 모여 전체를 인식하는 느낌
 
@@ -25,7 +25,7 @@
 - 필터의 영역 안에 있는 픽셀에만 연결됨
 - 저수준 특성에 집중하고 고수준 특성으로 조합해 나갈수 있는 특징이됨
 
-![image](./image14-2.PNG)
+![image](./img_src/image14-2.PNG)
 
 - 인식하는 과정에서 스트라이드, 패딩의 과정을 사용할 수 있음
 
@@ -54,7 +54,7 @@
 
 - SAME vs VALID Padding  
 
-![image](./image14-7.PNG)
+![image](./img_src/image14-7.PNG)
 
 - CNN층 구성
 ```python
@@ -77,12 +77,16 @@ conv = keras.layers.Conv2D(32,(3,3), padding="same", activation="relu")
     - 계산량, 메모리 사용량, 파라미터 수를 줄이기 위함
     - subsample (축소본)을 생성하기 위함
 
-![image](./image14-8.PNG)
+![image](./img_src/%5Badd%5Dpooling.PNG) 
+![image](./img_src/image14-8.PNG)
 
 - 최대 풀링의 경우 작은 변화에도 일정 수준의 불변성을 생성
+    - (추가) 이 부분에서 Pooling이 무조건 이득은 아닌 경우가 있는데, 작은 변화에도 민감해야 하는 사례들이 있는 경우임
+        - ex)자율 주행 자동차의 경우 작은 변화에 매우 민감할 경우가 있음.
+
     - 회전, 확대, 축소에 대한 약간의 불변성을 제공
 
-    ![image](./image14-9.PNG)
+    ![image](./img_src/image14-9.PNG)
 
 - 단점
     - Stride 2를 사용하여 축소를 진행해도 면적이 1/4로 줄어듬 (사실상 75% 손실)
@@ -102,6 +106,10 @@ pool = keras.layers.MaxPool2D(pool_size=2)
 - MaxPool의 경우 명확한 결과가 될 수 있으며 AvgPool보다 강력한 이동 불변성과 연산 비용이 조금 적음
 
 - 깊이 방향 Pool에 대해서 나왔으나 keras는 제공하지 않아 내용 생략함
+
+- Stochastic Pooling 
+    - MaxPool과 AvgPool의 문제를 해결하기 위해 고안
+    - 가장 강한 특성이 아니더라도 중요한 정보가 있는 경우 보존이 가능 
 
 - Global Average Pooling Layer도 존재
     - 각 특성 맵의 평균을 계산
@@ -127,9 +135,10 @@ global_avg_pool = keras.layers.GlobalAvgPool2D()
 
 - 마지막 층에서 예측 계산(activation은 유형에 따라 다름)
 
-![image](./image14-11.PNG)
+![image](./img_src/image14-11.PNG)
 
-- CNN 층에 필터를 크게 사용하지 않는 것이 좋다 
+- CNN 층에 필터를 크게 사용하지 않는 것이 좋다  
+  (추가) 이 내용에 대한 이해가 중요하다고 느낌 
     - ex) 5x5 대신 3x3 2개를 사용하는 것이 이득
     - 5x5 : 25 + 1 개의 파라미터 
     - 3x3 : 9 + 1 개의 파라미터 
@@ -175,20 +184,21 @@ model = keras.models.Sequential([
 
 - 1998년,MNIST에 사용
 
-![image](./table14-1.PNG)
+![image](./img_src/table14-1.PNG)
 
 ### 14.4.2 AlexNet
 
 - 2012년, IMAGENET 대회에서 우승
 
-![image](./table14-2.PNG)
+![image](./img_src/table14-2.PNG)
 
 - 여기서 Data Argmentation이 수행되는 과정이 추가됨
 
-![image](./image14-12.PNG)
+![image](./img_src/image14-12.PNG)
 
 - C1과 C3층 사이에 LRN 정규화 단계를 사용
     - 가장 강하게 활성화된 뉴런이 다른 특성 맵의 같은 위치의 뉴런 억제
+    - (추가) 특성 맵을 각기 특별하게 만들어서 더 넓은 큰 그림을 본다는 느낌으로 일반화 성능을 높이는 이점이 있음 
 
 
 ### 14.4.3 GoogLeNet
@@ -198,7 +208,7 @@ model = keras.models.Sequential([
 
 - AlexNet보다 10배 적은 파라미터를 가짐
 
-![image](./image14-13.PNG)
+![image](./img_src/image14-13.PNG)
 
 - 입력 이미지가 4개의 다른 층으로 출력 
 - 모든 층이 "same" padding을 사용하므로 feature map의 높이와 너비가 같음 
@@ -207,7 +217,7 @@ model = keras.models.Sequential([
 - why?) 왜 1x1 커널의 CNN층을 가질까 ?
     -> 파라미터 갯수가 줄어들며 훈련 속도가 높아지고 일반화 성능이 향상되는 이유로 사용
 
-![image](./image14-14.PNG)
+![image](./img_src/image14-14.PNG)
 
 상세설명 p.567
 
@@ -232,7 +242,7 @@ model = keras.models.Sequential([
     - 만약 입력 x를 네트워크의 출력에 더한다면(이것을 스킵연결이라고 함) 
     - 네트워크는 h(x) 대신에 f(x) = h(x) - x 를 학습하게 되는데 이것을 잔차 학습 이라고 함
 
-![image](./image14-15.PNG)
+![image](./img_src/image14-15.PNG)
 
 - 일반적인 신경망을 초기화할 때 >> 가중치는 0에 가까움, 따라서 네트워크도 0에 가까운 값을 출력
 - 스킵 연결 추가시에 네트워크는 입력과 같은 값을 출력 
@@ -243,19 +253,19 @@ model = keras.models.Sequential([
 
 일반적인 심층 신경망과 심층 잔차 네트워크의 구조 비교 
 
-![image](./image14-16.PNG)
+![image](./img_src/image14-16.PNG)
 
 
 - ResNet의 구조는 GoogLeNet과 똑같이 시작하고 종료 
 - 단, 중간에 잔차 유닛을 매우 깊게 쌓았다는 점이 차이
 
-![image](./image14-17.PNG)
+![image](./img_src/image14-17.PNG)
 
 - feature map의 수는 잔차 유닛마다 두배로 늘어나며 높이와 너비는 절반
 - 이 경우 입,출력의 크기가 달라서 입력이 잔차 유닛의 출력에 바로 더해질수 없음
 - 이 문제를 해결하기 위해 출력 특성 맵의 수가 같은 1x1 CNN 층으로 입력을 통과 시킨다고 함 
 
-![image](./image14-18.PNG)
+![image](./img_src/image14-18.PNG)
 
 
 - ResNet-34는 34개의 층으로 구성된 ResNet
