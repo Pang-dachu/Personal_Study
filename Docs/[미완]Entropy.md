@@ -76,7 +76,7 @@
 
 Reference 
 
-[Chat GPT](https://chat.openai.com/)    
-[재호아빠의 연구노트](https://dhkim9108.tistory.com/m/7)    
-[꾸준희](https://eehoeskrap.tistory.com/13) 
+[Chat GPT](https://chat.openai.com/)     
+[재호아빠의 연구노트](https://dhkim9108.tistory.com/m/7)     
+[꾸준희](https://eehoeskrap.tistory.com/13)      
 [Skywalk](https://hyunw.kim/blog/2017/10/27/KL_divergence.html) 
