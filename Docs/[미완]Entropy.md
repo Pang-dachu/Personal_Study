@@ -46,6 +46,8 @@
 
 - 그렇다면 예측에 대한 확률 분포 값이 실제에 대한 확률 분포 값을 모사하는데 얼마나 비용이 필요한가를 측정하는데 사용하겠네 ? 
 
++  어떤 이상적인 분포에 대해, 그 분포를 근사하는 다른 분포를 사용해 샘플링을 한다면 발생할 수 있는 정보 엔트로피 차이를 계산한다.\
++ 상대 엔트로피(relative entropy), 정보 획득량(information gain), 인포메이션 다이버전스(information divergence)라고도 한다.???
 
 
 
@@ -74,6 +76,7 @@
 
 Reference 
 
-[Chat GPT](https://chat.openai.com/)
-[재호아빠의 연구노트](https://dhkim9108.tistory.com/m/7)
-[꾸준희](https://eehoeskrap.tistory.com/13)
+[Chat GPT](https://chat.openai.com/)    
+[재호아빠의 연구노트](https://dhkim9108.tistory.com/m/7)    
+[꾸준희](https://eehoeskrap.tistory.com/13) 
+[Skywalk](https://hyunw.kim/blog/2017/10/27/KL_divergence.html) 
