@@ -26,6 +26,9 @@
 ---
 ## 2. Cross Entropy
 
+* 틀릴 수 있는 정보를 통해 구한 최적의 엔트로피 값
+( Uncertainty where the info can be incorrect )
+
 - Cross Entropy의 값은 0에서 1 사이의 값이 아님
 
 - 분류 문제에서 예측한 결과와 실제 결과 간의 차이를 측정하기 위해 사용 
